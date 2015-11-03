@@ -3,8 +3,8 @@
 .thumbnail img{transition:all 1.2s ease .25s;}
 #Keyshot3D{width: 350px;height: 350px;margin: 20px auto;}
 #Keyshot3D iframe{width: 350px;height: 350px;border: none}
-h2,h3,h4{color: #39c;}
+h2,h3,h4,h5{color: #39c;}
 #descript .panel-heading{padding: 0;}
 #descript{color: #555}
 .nav-tabs{position: relative;bottom: -1px;}
-.media{margin-top: 30px;}
+.media{margin-top: 40px;}
