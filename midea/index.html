@@ -23,14 +23,16 @@
 
 	<nav class="navbar navbar-default navbar-fixed-top">
 	  <div class="container">
-			<div class="navbar-header" style="position:absolute">
+	  	<div class="row">
+			<div class="navbar-header col-md-4 col-xs-2">
 		      <a class="navbar-brand" href="#">
 		        <img alt="Brand" src="img/LOGO2.png">
 		      </a>
 		    </div>
-	    	<div class="col-md-8 col-md-offset-2">
-				<h1>Water Heater <small>for International</small></h1>
-				<ul class="nav nav-tabs">
+	    	<div class="col-md-8 text-right ">
+				<h1><small>Water Heater Menu <small>( international )
+					&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</small></small></h1>
+				<ul class="nav nav-tabs navbar-right">
 				  	<li class="dropdown active" id="menutest1">
 					    <a class="dropdown-toggle" data-toggle="dropdown" href="#menutest1">
 					      <span class="glyphicon glyphicon-flash" aria-hidden="true"></span> 
@@ -61,17 +63,18 @@
 				  </li>
 				</ul>
 			</div>
+		</div>
 	  </div>
 	</nav>
 
-	<div id="main" class="container">
+	<div id="main" class="container"  ng-mouseleave="empty()">
 		
 		<div class="row">
 			<div class="col-md-8 col-md-offset-2">
 
 				<!-- 占位的 -->
-				<h1>Water Heater</h1>
-				<ul class="nav nav-tabs">
+				<h1>Water Heater <small>( international )</small></h1>
+				<ul class="nav nav-tabs navbar-center">
 				  	<li class="dropdown active" id="menutest1">
 					    <a class="dropdown-toggle" data-toggle="dropdown" href="#menutest1">
 					      <span class="glyphicon glyphicon-flash" aria-hidden="true"></span> 
@@ -104,7 +107,7 @@
 				<!-- 占位的结束 -->
 
 				
-				<div class="page-header">
+				<div class="page-header text-center">
 				  <h2>Midea Water Heater <small>2015 selection</small></h2>
 				</div>
 				<h3>Details</h3>
@@ -164,7 +167,7 @@
 				</div>
 
 				<h3>Description</h3>			
-				<div class="row" ng-controller="Display" ng-mouseleave="empty()">
+				<div class="row" ng-controller="Display">
 					<div class="col-sm-6 col-md-6">
 						<div id=preview>
 							<div class='jqzoom' id='spec-n1'>
@@ -199,6 +202,10 @@
 						<p>{{descript}}</p>
 
 					</div>
+					<div class="col-sm-6 col-md-6">
+						<button type="button" class="btn btn-info">I want it！</button>
+						<button type="button" class="btn btn-default">To know more</button>
+					</div>
 
 				</div>
 
@@ -209,10 +216,12 @@
 				    </a>
 				  </div>
 				  <div class="media-body">
-				    <h5 class="media-heading">Midea Group. All Rights Reserved</h5>
-				    <p><i class="glyphicon glyphicon-earphone"></i>	+86 (0757)26338888</p>
-				    <p><i class="glyphicon glyphicon-print"></i>	+86 (0757)26654011</p>
-				    <p><i class="glyphicon glyphicon-map-marker"></i>	No. 6 Midea Avenue, Beijiao, Shunde, Foshan City, Guangdong Province, P.R. China 528311</p>
+				  	<div class="col-md-12 col-md-offset-1">
+					  	<h5 class="media-heading">Midea Group. All Rights Reserved</h5>
+					    <p><i class="glyphicon glyphicon-earphone"></i>	+86 (0757)26338888</p>
+					    <p><i class="glyphicon glyphicon-print"></i>	+86 (0757)26654011</p>
+					    <p><i class="glyphicon glyphicon-map-marker"></i>	No. 6 Midea Avenue, Beijiao, Shunde, Foshan City, Guangdong Province, P.R. China 528311</p>
+				  	</div>
 				  </div>
 				</div>
 
