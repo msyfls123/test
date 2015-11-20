@@ -24,7 +24,7 @@ $(this).after("<div class='zoomdiv'><img class='bigimg' src='"+bigimage+"'/></di
 $(this).append("<div class='jqZoomPup'>&nbsp;</div>");}
 if(settings.position=="right"){
 if(imageLeft+imageWidth+settings.offset+settings.xzoom>screen.width){
-leftpos=imageLeft-settings.offset-settings.xzoom;}else{
+leftpos=imageWidth+settings.offset;}else{
 leftpos=imageWidth+settings.offset;}}else{
 leftpos=imageLeft-settings.xzoom-settings.offset;
 if(leftpos<0){
