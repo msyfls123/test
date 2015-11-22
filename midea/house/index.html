@@ -8,22 +8,31 @@
 	<script type="text/javascript" src="../files/js/d3.min.js"></script>
 	<script type="text/javascript" src="../files/js/bootstrap.min.js"></script>
 	<style type="text/css">
-		#chart{width:600px;height: 400px;margin: auto auto;border: 1px solid #999}
-		.btn-group{margin: 0 auto}
+		#chart{width:600px;height: 400px;margin: 10px -15px;}
+		#waterflow{width:600px;margin: auto auto;}
+		#waterflow .panel-body{background: #efefef;font-style: italic;}
 	</style>
 </head>
 <body>
 	<div id="main" class="container">
 		<div class="row">
-			<div id="chart">
+			
+			<div id="waterflow" class="panel panel-default">
+			  <div class="panel-heading">Panel heading without title</div>
+			  <div class="panel-body">
+			  	<div id="chart">
 				
-			</div>
-			<div class="col-md-3 col-md-offset-5">
-				<div class="btn-group btn-lg" role="group" >
-				  <button id="run" type="button" class="btn btn-primary">Run</button>
-				  <button id="stop" type="button" class="btn btn-danger">Stop</button>
-				  <button id="step" type="button" class="btn btn-info">Step</button>
 				</div>
+				<hr>
+			    <div class="btn-group col-md-4" role="group" >
+				  <button id="run" type="button" class="btn btn-primary" data-toggle="tooltip" title="Play"><i class="glyphicon glyphicon-play" ></i></button>
+				  <button id="stop" type="button" class="btn btn-danger" data-toggle="tooltip" title="Stop"><i class="glyphicon glyphicon-stop" ></i></button>
+				  <button id="step" type="button" class="btn btn-info" data-toggle="tooltip" title="by Step"><i class="glyphicon glyphicon-forward" ></i></button>
+				</div>
+				<div id="text" class="col-md-8 text-info" >
+					"Hello worldHello worldHello worldHello worldHello worldHello worldHello world"
+				</div>
+			  </div>
 			</div>
 		</div>
 	</div>
@@ -40,57 +49,64 @@
     var LineArr=new Array();
     var flag=-1;
 
-	function addLine(id,color,str,length,all){
+	function addLine(id,color,str,length,text,all){
 		var flow=svg.append("path")
 	    .attr("stroke",color)
 	    .attr("stroke-width",2)
 	    .attr("fill","none")
 	    .attr("d",str)
 	    .attr("stroke-dasharray","0 "+length)
-	    transform(id,flow,length,all)
+	    transform(id,flow,length,text,all)
 	    flag=id
 	    return flow
 	}
 
-	function transform(id,obj,end,all){
+	function transform(id,obj,end,text,all){
 		var sum=0;
 		for (var i = id-1; i >= 0; i--) {
 			sum+=lines[i][3]*10;
 		};
 		var time=all?sum:0;
-		console.log(all)
-		obj.transition()
+		var lintra=obj.transition()
 		.delay(time)
 		.duration(end*10)
 		.attr("stroke-dasharray",end+" 0")
+		.tween("text",function(){
+			if(text!=""){$("#text").stop(false,false).text(text)}
+		})
 	}
 
 	var lines=[
-		[0,"#a3bccb","M20 380 l 107 0 q 5.5 0 5.5 -5 l 0 -234","349"],
-		[1,"#f5b090","M190 110 l 30 30 l 0 64.5 l -74.5 0 l 0 139 l 53 0 q 5 0 5 -5 l 0 -8","389"],
-		[2,"#f5b090","M203 324 l 0 -9","10"],
-		[3,"#ea5431","M216 315 l 0 19 q 0 10 10 10 l 48 0 q 10 0 10 -10","100"],
+		[0,"#a3bccb","M20 380 l 107 0 q 5.5 0 5.5 -5 l 0 -234","349","Cold water comes"],
+		[1,"#f5b090","M190 110 l 30 30 l 0 64.5 l -74.5 0 l 0 139 l 53 0 q 5 0 5 -5 l 0 -8","389","With the sunshine, enter the water heater"],
+		[2,"#f5b090","M203 324 l 0 -9","10",""],
+		[3,"#ea5431","M216 315 l 0 19 q 0 10 10 10 l 48 0 q 10 0 10 -10 l 0 -20 q 0 -11 11 -11","200","Become very hot"],
+		[4,"#a3bccb","M526 363 l -5 0 q -10 0 -10 -10 q 0 -10 -10 -10 l -170 0 q -10 0 -10 -10 l 0 -20 q 0 -10 -10 -10 l -3 0","262","Mixed with the cold water again"],
+		[5,"#f5b090","M302 298 l 0 -108 q 0 -10 10 -10 l 18 0 q 10 0 10 10","157","Flow to bath"],
 	]
 
     $("#run").on("click",function(){
     	for (var i=0; i <= lines.length - 1; i++) {
-    		Line=new addLine(lines[i][0],lines[i][1],lines[i][2],lines[i][3],true)
+    		Line=new addLine(lines[i][0],lines[i][1],lines[i][2],lines[i][3],lines[i][4],true)
     		LineArr.push(Line)
     	};
+    	flag=-1
     })
     $("#stop").on("click",function(){
     	for (var i = LineArr.length - 1; i >= 0; i--) {
     		LineArr[i].remove()
     	};
     	flag=-1
+		$("#text").text("")
     })
 
     $("#step").on("click",function(){
     	var i=flag+1
-    	Line=new addLine(lines[i][0],lines[i][1],lines[i][2],lines[i][3],false)
+    	Line=new addLine(lines[i][0],lines[i][1],lines[i][2],lines[i][3],lines[i][4],false)
     	LineArr.push(Line)
     })
     window.onload=function(){$("#run").trigger("click");}
+    $(function(){$('[data-toggle="tooltip"]').tooltip({placement:"top"});})
 	</script>
 </body>
 </html>
