@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../files/css/bootstrap.min.css">
+	<script type="text/javascript" src="../files/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../files/js/d3.min.js"></script>
+	<script type="text/javascript" src="../files/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		#chart{width:600px;height: 400px;margin: auto auto;border: 1px solid #999}
+		.btn-group{margin: 0 auto}
+	</style>
+</head>
+<body>
+	<div id="main" class="container">
+		<div class="row">
+			<div id="chart">
+				
+			</div>
+			<div class="col-md-3 col-md-offset-5">
+				<div class="btn-group btn-lg" role="group" >
+				  <button id="run" type="button" class="btn btn-primary">Run</button>
+				  <button id="stop" type="button" class="btn btn-danger">Stop</button>
+				  <button id="step" type="button" class="btn btn-info">Step</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+	svg=d3.selectAll("#chart").append("svg").attr("width",600).attr("height",400)
+	svg.append("image")  
+    .attr("x",0)  
+    .attr("y",0)  
+    .attr("width",600)  
+    .attr("height",400)  
+    .attr("xlink:href","waterflow.svg"); 
+
+    var LineArr=new Array();
+    var flag=-1;
+
+	function addLine(id,color,str,length,all){
+		var flow=svg.append("path")
+	    .attr("stroke",color)
+	    .attr("stroke-width",2)
+	    .attr("fill","none")
+	    .attr("d",str)
+	    .attr("stroke-dasharray","0 "+length)
+	    transform(id,flow,length,all)
+	    flag=id
+	    return flow
+	}
+
+	function transform(id,obj,end,all){
+		var sum=0;
+		for (var i = id-1; i >= 0; i--) {
+			sum+=lines[i][3]*10;
+		};
+		var time=all?sum:0;
+		console.log(all)
+		obj.transition()
+		.delay(time)
+		.duration(end*10)
+		.attr("stroke-dasharray",end+" 0")
+	}
+
+	var lines=[
+		[0,"#a3bccb","M20 380 l 107 0 q 5.5 0 5.5 -5 l 0 -234","349"],
+		[1,"#f5b090","M190 110 l 30 30 l 0 64.5 l -74.5 0 l 0 139 l 53 0 q 5 0 5 -5 l 0 -8","389"],
+		[2,"#f5b090","M203 324 l 0 -9","10"],
+		[3,"#ea5431","M216 315 l 0 19 q 0 10 10 10 l 48 0 q 10 0 10 -10","100"],
+	]
+
+    $("#run").on("click",function(){
+    	for (var i=0; i <= lines.length - 1; i++) {
+    		Line=new addLine(lines[i][0],lines[i][1],lines[i][2],lines[i][3],true)
+    		LineArr.push(Line)
+    	};
+    })
+    $("#stop").on("click",function(){
+    	for (var i = LineArr.length - 1; i >= 0; i--) {
+    		LineArr[i].remove()
+    	};
+    	flag=-1
+    })
+
+    $("#step").on("click",function(){
+    	var i=flag+1
+    	Line=new addLine(lines[i][0],lines[i][1],lines[i][2],lines[i][3],false)
+    	LineArr.push(Line)
+    })
+    window.onload=function(){$("#run").trigger("click");}
+	</script>
+</body>
+</html>
