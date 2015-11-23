@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Suo</title>
+	<link rel="stylesheet" href="../files/css/base.css">
+	<link rel="stylesheet" href="../files/css/bootstrap.min.css">
+	<script type="text/javascript" src="../files/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../files/js/d3.min.js"></script>
+	<script type="text/javascript" src="../files/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		#explode{position:relative;margin:0 auto;width: 700px;height: 500px;background: #ddd;}
+		#explode button{position:absolute;bottom: 20px;left: 50%;margin-left: -18.5px; width: 37px;height: 37px;border-radius: 50%;}
+		.pic{position:absolute;background-position:0 0;overflow: hidden;cursor: pointer;}
+		.pic.on{background-position:-100% 0}
+	</style>
+</head>
+<body>
+	<div id="main" class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div id="waterflow" class="panel panel-default">
+			  	<div class="panel-body">
+				<div id="explode">
+					<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button>
+				</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var pics=[
+			// url,width,height,init_top,init_left,move_top,move_left
+			["../img/suo/00.png",330,200,175,200],
+			["../img/suo/01.png",180,120,180,214],
+			["../img/suo/02.png",160,120,176,350],
+			["../img/suo/03.png",70,80,239,360],
+			["../img/suo/04.png",190,110,239,327],
+			["../img/suo/05.png",340,200,171,196],
+			["../img/suo/06.png",350,190,192,188],
+			["../img/suo/07.png",360,180,195,188],
+		]
+
+		var picObjs=new Array();
+
+		for (var i = pics.length - 1; i >= 0; i--) {
+			var newObj=document.createElement("div")
+			newObj.className="pic"
+			newObj.style.backgroundImage="url("+pics[i][0]+")"
+			newObj.style.width=pics[i][1]+"px"
+			newObj.style.height=pics[i][2]+"px"
+			newObj.style.top=pics[i][3]+"px"
+			newObj.style.left=pics[i][4]+"px"
+			newObj.style.opacity=.5
+			var picObj=$("#explode").append(newObj)
+			picObjs.push(picObj)
+		};
+
+		$(function(){
+				$(".pic").mouseover(function(){
+					$(this).addClass("on")
+				})
+				$(".pic").mouseout(function(){
+				$(this).removeClass("on")
+			})
+		})
+
+	</script>
+</body>
+</html>
