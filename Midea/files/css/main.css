@@ -15,3 +15,4 @@ h2,h3,h4,h5{color: #39c;padding: 0 0 5px 0}
 #waterflow{width:600px;margin: auto auto;}
 #waterflow .panel-body{background: #f7f7f7;font-style: italic;}
 .navbar-brand img{margin: -17px 25px}
+.modal-content img{width: 100%;}

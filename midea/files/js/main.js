@@ -45,6 +45,7 @@
       .remove()
   }
 $(document).ready(function() {
+    $('#myModal').modal("show")
     $(".thumbnail a").imgbox({
       padding: 0,               // Set the padding/transparent border around the image.
       border: 0,                 // Set the solid border around the image.
