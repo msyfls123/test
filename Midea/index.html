@@ -82,10 +82,88 @@
 
 				
 				<div class="page-header text-center">
-				  <h2>Midea Water Heater <small>2015 selection</small></h2>
+				  <h2>Midea Water Heater <small>2016 selection</small></h2>
 				</div>
-				<h3>Details</h3>
 
+				<h3>Description</h3>			
+				<div id="show" class="row" ng-controller="Display">
+					<div class="col-sm-6 col-md-6">
+						<div id=preview>
+							<div class='jqzoom' id='spec-n1'>
+								<img height='350' src="img/1.jpg" jqimg="img/1.jpg" width='350'>
+							</div>
+							<div id='spec-n5'>
+								<div class='control' id='spec-left'>
+								<img src="img/left.gif" />
+								</div>
+								<div id='spec-list'>
+									<ul class='list-h'>
+										<li><img src="img/1.jpg" ng-mouseover="log(0)" > </li>
+										<li><img src="img/2.jpg" ng-mouseover="log(1)" > </li>
+										<li><img src="img/3.jpg" ng-mouseover="log(2)" > </li>
+										<li><img src="img/4.jpg" ng-mouseover="log(3)" > </li>
+										<li><img src="img/5.jpg" ng-mouseover="log(4)" > </li>
+										<li><img src="img/6.jpg" ng-mouseover="log(5)" > </li>
+									</ul>
+								</div>
+								<div class='control' id='spec-right'>
+									<img src="img/right.gif" />
+								</div>	
+							</div>
+						</div>
+					</div>
+					<div id="descript" class="col-sm-6 col-md-6 panel panel-info" ng-init="descript = 'Select One To See More !'">
+					        <h4>Water Heater</h4>
+						<p><i class="glyphicon glyphicon-file"></i> {{name}}</p>
+						<p><i class="glyphicon glyphicon-info-sign"></i> {{type}}</p>
+						<p><i class="glyphicon glyphicon-signal"></i> {{detail}}</p>
+						<p><i class="glyphicon glyphicon-cog"></i> {{location}}</p>
+						<p>{{descript}}</p>
+
+					</div>
+					<div class="col-sm-6 col-md-6 text-center" id="buy">
+						<button type="button" class="btn btn-info">I want it！</button>
+						<button type="button" class="btn btn-default">To know more</button>
+					</div>
+				</div>
+
+
+				<h3>3D Display</h3>
+				<div id="Keyshot3D" data-toggle="tooltip" title="Drag to rotate. Scroll to resize">
+					<iframe src="files/heater/heater.html"></iframe>
+				</div>
+
+				<h3>SVG Animation</h3>
+				<div class="row">
+					<div id="waterflow" class="panel panel-default">
+					  
+					  <div class="panel-body">
+					  	<div id="chart">
+						
+						</div>
+						<hr>
+					    <div class="btn-group col-md-4" role="group" >
+						  <button id="run" type="button" class="btn btn-primary"><i class="glyphicon glyphicon-play" ></i></button>
+						  <button id="stop" type="button" class="btn btn-danger"><i class="glyphicon glyphicon-stop" ></i></button>
+						  <button id="step" type="button" class="btn btn-info" data-toggle="tooltip" title="by Step"><i class="glyphicon glyphicon-forward" ></i></button>
+						</div>
+						<div id="text" class="col-md-8 text-info" >
+							"Hello world"
+						</div>
+					  </div>
+					</div>
+				</div>
+
+				<h3>Explode View</h3>
+				<div class="panel panel-default">
+				  	<div class="panel-body">
+						<div id="explode">
+							<button type="button" class="btn btn-default" data-toggle="tooltip" title="Reset"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></button>
+						</div>
+					</div>
+				</div>
+
+				<h3>Details</h3>
 				<div class="row">
 				  <div class="col-sm-6 col-md-4">
 
@@ -132,76 +210,7 @@
 					</div>
 				</div>
 
-				<h3>3D Display</h3>
-				<div id="Keyshot3D" data-toggle="tooltip" title="Drag to rotate. Scroll to resize">
-					<iframe src="files/heater/heater.html"></iframe>
-				</div>
 
-				<h3>SVG Animation</h3>
-				<div class="row">
-					<div id="waterflow" class="panel panel-default">
-					  
-					  <div class="panel-body">
-					  	<div id="chart">
-						
-						</div>
-						<hr>
-					    <div class="btn-group col-md-4" role="group" >
-						  <button id="run" type="button" class="btn btn-primary"><i class="glyphicon glyphicon-play" ></i></button>
-						  <button id="stop" type="button" class="btn btn-danger"><i class="glyphicon glyphicon-stop" ></i></button>
-						  <button id="step" type="button" class="btn btn-info" data-toggle="tooltip" title="by Step"><i class="glyphicon glyphicon-forward" ></i></button>
-						</div>
-						<div id="text" class="col-md-8 text-info" >
-							"Hello world"
-						</div>
-					  </div>
-					</div>
-				</div>
-
-
-
-				<h3>Description</h3>			
-				<div id="show" class="row" ng-controller="Display">
-					<div class="col-sm-6 col-md-6">
-						<div id=preview>
-							<div class='jqzoom' id='spec-n1'>
-								<img height='350' src="img/1.jpg" jqimg="img/1.jpg" width='350'>
-							</div>
-							<div id='spec-n5'>
-								<div class='control' id='spec-left'>
-								<img src="img/left.gif" />
-								</div>
-								<div id='spec-list'>
-									<ul class='list-h'>
-										<li><img src="img/1.jpg" ng-mouseover="log(0)" > </li>
-										<li><img src="img/2.jpg" ng-mouseover="log(1)" > </li>
-										<li><img src="img/3.jpg" ng-mouseover="log(2)" > </li>
-										<li><img src="img/4.jpg" ng-mouseover="log(3)" > </li>
-										<li><img src="img/5.jpg" ng-mouseover="log(4)" > </li>
-										<li><img src="img/6.jpg" ng-mouseover="log(5)" > </li>
-									</ul>
-								</div>
-								<div class='control' id='spec-right'>
-									<img src="img/right.gif" />
-								</div>	
-							</div>
-						</div>
-					</div>
-					<div id="descript" class="col-sm-6 col-md-6 panel panel-info" ng-init="descript = 'Select One To See More !'">
-					        <h4>Water Heater</h4>
-						<p><i class="glyphicon glyphicon-file"></i> {{name}}</p>
-						<p><i class="glyphicon glyphicon-info-sign"></i> {{type}}</p>
-						<p><i class="glyphicon glyphicon-signal"></i> {{detail}}</p>
-						<p><i class="glyphicon glyphicon-cog"></i> {{location}}</p>
-						<p>{{descript}}</p>
-
-					</div>
-					<div class="col-sm-6 col-md-6 text-center" id="buy">
-						<button type="button" class="btn btn-info">I want it！</button>
-						<button type="button" class="btn btn-default">To know more</button>
-					</div>
-
-				</div>
 
 				</div>
 			</div>

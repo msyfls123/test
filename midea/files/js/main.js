@@ -1,4 +1,4 @@
-
+// d3可视化中的阳光小箭头
   var light=function(dis1,dis2){svg.append("image")  
     .attr("x",dis1)  
     .attr("y",dis2)  
@@ -21,6 +21,7 @@
     .remove();
   }
 
+// d3可视化中的水流
   var water=function(x){
     var random=.5*Math.random()+.75;
     svg.append("circle")
@@ -45,6 +46,93 @@
       .remove()
   }
 $(document).ready(function() {
+
+
+// start 爆炸图效果
+
+//定义数据
+var pics=[
+      // url,width,height,init_top,init_left,move_top,move_left,title,content
+      ["img/suo/00.png",330,200,175,200,175,200,"The Lock","Click on me to see more!"],
+      ["img/suo/01.png",180,120,180,214,60,85,"Innovative motor-lid patent technology","Midea values sustainable business operations through a balance of economic, social and environmental factors."],
+      ["img/suo/02.png",160,120,176,350,20,520,"T2.0mm Multi-layer inner pot ","Midea focuses on optimization of both its operations and the design of its products to minimize environmental damage."],
+      ["img/suo/03.png",190,110,239,327,190,320,"Touch control on the upper lid","During the manufacturing processes, Midea focuses on improving efficiency in energy, waste, water, and carbon emissions. "],
+      ["img/suo/04.png",70,80,239,360,130,450," Easy-to-read graphical user guide LCD display"," Midea strives to help individuals and entire communities develop a better world for today"],
+      ["img/suo/05.png",340,200,171,196,215,20,"Multi-function cooking by menu settings","Midea works with several non-profit organizations to provide charitable support to local communities."],
+      ["img/suo/06.png",350,190,192,188,360,415,"Programmable preset timer","Midea Dishwasher R&D Center is the largest and most advanced of its kind in Asia. "],
+      ["img/suo/07.png",360,180,195,188,350,-80,"Automatic keep warm function","Midea kitchen appliance division has approximately 10,000 employees with a sales revenue of 10 billion Yuan."],
+    ]
+
+//空数组用来存放各个部分的jQuery对象
+var picObjs=new Array();
+
+
+//插入图片，并赋予相应数值
+for (var i = pics.length - 1; i >= 0; i--) {
+  var newObj=document.createElement("div")
+  newObj.className="pic"
+  newObj.style.backgroundImage="url("+pics[i][0]+")"
+  newObj.style.width=pics[i][1]+"px"
+  newObj.style.height=pics[i][2]+"px"
+  newObj.style.top=pics[i][3]+"px"
+  newObj.style.left=pics[i][4]+"px"
+  newObj.style.opacity=1
+  $newObj=$(newObj)
+  $newObj.attr({
+    "title":pics[i][7],
+    "data-content":pics[i][8],
+    "data-toggle":"popover"
+    })
+
+  if(i==1||i==2||i==5){
+    $newObj.attr("data-placement","left")
+  }
+  if(i==0||i==6||i==7){
+    $newObj.attr("data-placement","top")
+  }
+  var picObj=$("#explode").append($newObj)
+  picObjs.push($newObj)
+};
+
+//反转图片序列，因为是倒着插入的，很重要
+picObjs.reverse()
+
+//图片位移动画
+function show(id,dir){
+  var delayTime=dir?id*250:250*(7-id)
+  var moveTop=dir?pics[id][5]:pics[id][3]
+  console.log(moveTop)
+  var moveLeft=dir?pics[id][6]:pics[id][4]
+  console.log(moveLeft)
+  picObjs[id].stop(true,true).delay(delayTime).animate({"top":moveTop+"px","left":moveLeft+"px"},500)
+}
+
+function start(){
+  picObjs[0].stop(false,false).fadeOut("fast")
+  for (var idx = 1; idx <= picObjs.length-1; idx++) {
+    show(idx,true)
+  };
+}
+
+function reset(){
+  for (var idx = picObjs.length-1; idx >= 1; idx--) {
+    show(idx,false)
+  };
+  picObjs[0].delay(1850).fadeIn("300")
+}
+
+$(function(){
+  $(".pic").hover(
+    function(){$(this).addClass("on")},
+    function(){$(this).removeClass("on")
+  })
+  $('[data-toggle="popover"]').hover(function(){$(this).popover("show")},function(){$(this).popover("hide")})
+  $("#explode button").on("click",function(){reset()})
+  picObjs[0].on("click",function(){start()})
+})
+
+  // end of explode
+
     $('#myModal').modal("show")
     $(".thumbnail a").imgbox({
       padding: 0,               // Set the padding/transparent border around the image.
@@ -103,6 +191,8 @@ $(document).ready(function() {
     });
 
 //d3可视化
+
+// 添加房屋图片
 svg=d3.selectAll("#chart").append("svg").attr("width",600).attr("height",400)
   svg.append("image")  
     .attr("x",0)  
@@ -183,6 +273,7 @@ svg=d3.selectAll("#chart").append("svg").attr("width",600).attr("height",400)
 });
 
 
+// AngularJS实现鼠标悬浮显示相应数据
     var example=[
     {
       "name":"DXX-20EYC",

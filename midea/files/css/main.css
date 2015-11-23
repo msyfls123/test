@@ -2,7 +2,7 @@
 .thumbnail img:hover{cursor:pointer;transform: scale3d(1.7,1.7,1);}
 .thumbnail img{transition:all 1.2s ease .25s;}
 #Keyshot3D{width: 350px;height: 350px;margin: 20px auto;}
-#Keyshot3D iframe{width: 350px;height: 350px;border: none}
+#Keyshot3D iframe{width: 350px;height: 350px;border: 1px solid #efefef}
 h2,h3,h4,h5{color: #39c;padding: 0 0 5px 0}
 #descript .panel-heading{padding: 0;}
 #descript{color: #555}
@@ -16,3 +16,7 @@ h2,h3,h4,h5{color: #39c;padding: 0 0 5px 0}
 #waterflow .panel-body{background: #f7f7f7;font-style: italic;}
 .navbar-brand img{margin: -17px 25px}
 .modal-content img{width: 100%;}
+#explode{position:relative;margin:0 auto;width: 700px;height: 500px;background: #f7f7f7;}
+#explode button{position:absolute;bottom: 20px;left: 50%;margin-left: -18.5px; width: 37px;height: 37px;border-radius: 50%;outline:none;}
+.pic{position:absolute;background-position:0 0;overflow: hidden;cursor: pointer;}
+.pic.on{background-position:-100% 0}
