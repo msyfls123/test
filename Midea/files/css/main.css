@@ -10,3 +10,8 @@ h2,h3,h4,h5{color: #39c;}
 #show{position: relative;}
 #buy{position: absolute;bottom: 20px;right: 0;background: #f6f6f6;padding: 20px 10px}
 #copy{background: #efefef;padding: 20px;margin-top: 20px;}
+#copy .media{width: 100%}
+#chart{width:600px;height: 400px;margin: 10px -15px;}
+#waterflow{width:600px;margin: auto auto;}
+#waterflow .panel-body{background: #f7f7f7;font-style: italic;}
+.navbar-brand img{margin: -17px 25px}
