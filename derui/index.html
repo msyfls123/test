@@ -12,7 +12,7 @@
   <script src="./js/jquery.min.js" charset="utf-8"></script>
   <script src="./js/bootstrap.min.js" charset="utf-8"></script>
 </head>
-<body>
+<body onLoad="type()">
 
     <div id="logo" alt="我们的LOGO">
       <svg width=100% height=100%>
@@ -111,13 +111,25 @@
     </div>
 
     <script type="text/javascript">
-  		$(document).ready(function() {
-  			var theWindow = $(window);
-  			function resizeBg() {
-  				$("body").height(theWindow.height())
-  			}
-  			theWindow.resize(resizeBg).trigger("resize");
-  		});
+  		// $(document).ready(function() {
+  		// 	var theWindow = $(window);
+  		// 	function resizeBg() {
+  		// 		$("body").height(theWindow.height())
+  		// 	}
+  		// 	theWindow.resize(resizeBg).trigger("resize");
+  		// });
+
+    var text = "程序员正在加班加点开发，敬请期待";
+    i = 0;
+    function type(){
+     str  = text.substr(0,i);
+     blink.innerHTML = str + " _";
+     i++;
+     if (i>text.length){
+         i=0;
+       }
+     setTimeout("type()",300);
+    }
   	</script>
 </body>
 </html>
