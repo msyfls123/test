@@ -31,9 +31,12 @@
 <body>
   <h3>显微镜下实拍电子轨迹</h3>
   <canvas id="p" width=300 height=300></canvas>
+  <p><i>Speed x <span id="times"></span></i></p>
   <div id="btn">
-    <button onclick="msy.loop()">GO</button>
-    <button onclick="clearTimeout(mloop)">STOP</button>
+
+    <button onclick="msy.clear()">RESTART</button>
+    <button onclick="msy.up()">UP</button>
+    <button onclick="msy.slow()">DOWN</button>
   </div>
 
   <script>
@@ -46,6 +49,7 @@
     var canvas = document.getElementById("p");
     var ctx = canvas.getContext("2d");
     var currentList=new Array();
+    var times=0;
     //画点...
     function draw(x,y,d){
       ctx.fillStyle="#2a2e32";
@@ -122,11 +126,41 @@
       mloop=setTimeout(function(){loop()},70)
     }
 
+    //重启所有点
+    function clear(){
+      clearTimeout(mloop)
+      currentList=[]
+      if (times==0) {
+        times+=1;
+        document.getElementById('times').innerHTML=times
+      }
+      loop()
+    }
+
+    //减速
+    function slow(){
+      clearTimeout(mloop)
+      if (times>0) {
+        times-=1;
+        document.getElementById('times').innerHTML=times
+      }
+    }
+
+
+    //加速
+    function up(){
+      times+=1
+      document.getElementById('times').innerHTML=times
+      loop()
+    }
+
     //暴露给外部变量
-    msy.loop=loop
+    msy.up=up;
+    msy.clear=clear;
+    msy.slow=slow;
   })(msy)
 
-    msy.loop()
+    msy.up()
   </script>
 </body>
 </html>
