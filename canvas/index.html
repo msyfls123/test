@@ -5,27 +5,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Document</title>
+  <title>显微镜下实拍电子轨迹</title>
   <style>
     body{
       display:flex;
       flex-direction:column;
       justify-content:center;
-      align-items: center;}
+      align-items: center;
+      text-align: center;
+      }
+    h3{margin-top: 55px;
+      color: #BBB}
     #p{
-      margin: 75px;
-      border:1px solid #ddd;border-radius: 20px;
+      margin: 35px;
+      border:1px solid #D896BF;
+      border-radius: 50%;
       background: #FFDCF2;
+      box-shadow: inset 0px 0px 20px 2px #fff;
       }
     #btn{display: block}
+    button{border: none;background: none;cursor: pointer;min-width: 50px;min-height: 50px;}
+    button:hover{background:#D896BF;color: #fff;}
   </style>
 </head>
 <body>
-
+  <h3>显微镜下实拍电子轨迹</h3>
   <canvas id="p" width=300 height=300></canvas>
   <div id="btn">
-    <button onclick="msy.loop()">Go</button>
-    <button onclick="clearTimeout(mloop)">Stop</button>
+    <button onclick="msy.loop()">GO</button>
+    <button onclick="clearTimeout(mloop)">STOP</button>
   </div>
 
   <script>
@@ -111,7 +119,7 @@
       }
       move()
       // console.log(currentList)
-      mloop=setTimeout(function(){loop()},100)
+      mloop=setTimeout(function(){loop()},70)
     }
 
     //暴露给外部变量
