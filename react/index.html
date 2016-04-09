@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Tutorial</title>
+    <!-- Not present in the tutorial. Just for basic styling. -->
+    <link rel="stylesheet" href="css/base.css" />
+    <script src="./scripts/react-with-addons.js"></script>
+    <script src="./scripts/react-dom.js"></script>
+    <script src="./scripts/browser.js"></script>
+    <script src="./scripts/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script> -->
+    <style>
+      #content2 .char{
+        width: 200px;
+        border: 1px solid #ccc;
+        margin: 25px 0;
+        padding: 0 5px;
+      }
+      #content2 .char>span{
+        display: block;
+      }
+      #content2 .vote{
+        float: right;
+        color: red;
+        cursor: pointer;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select:none;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content"></div>
+    <div id="content2"></div>
+    <!-- <script type="text/babel" src="scripts/example.js"></script> -->
+    <script type="text/babel">
+      var Timer=React.createClass({
+        getInitialState:function(){
+          return {time:this.props.start};
+        },
+        startTick:null,
+        tick:function(){
+          if (this.state.time>0) {
+            this.setState({time:this.state.time-1});
+          }else{
+            clearInterval(this.startTick);
+          }
+        },
+        componentDidMount:function(){
+          this.startTick=setInterval(this.tick,1000);
+        },
+        triggerTick:function(){
+          this.setState({time:this.props.start});
+          clearInterval(this.startTick);
+          this.startTick=setInterval(this.tick,1000);
+        },
+        render:function(){
+          return (
+            <div>
+              <div>{this.state.time}秒</div>
+              <button onClick={this.triggerTick}>Click me</button>
+            </div>
+          );
+        }
+      });
+      ReactDOM.render(
+        <Timer start={60} />,
+        document.getElementById("content")
+      )
+    </script>
+    <script type="text/babel">
+      var Char=React.createClass({
+        getInitialState:function(){
+          return {data:[
+            {name:"kimi",zone:"chn",vote:2999,id:0},
+            {name:"mom",zone:"usa",vote:1799,id:1},
+            {name:"dad",zone:"jp",vote:899,id:2}
+          ]}
+        },
+        addData:function(){
+          var tempData=this.state.data;
+          var tempId=tempData.length;
+          tempData.push({name:"pass",zone:"kr",vote:0,id:tempId})
+          this.setState({data:tempData})
+        },
+        addVote:function(idx,e){
+
+          var tempData=this.state.data;
+          tempData[idx].vote++;
+          this.setState({data:tempData})
+        },
+        render:function(){
+          var that=this;
+          var charNodes=this.state.data.map(function(char){
+            return (
+              <li key={char.id} className="char">
+                <span>Name:{char.name}</span>
+                <span>Zone:{char.zone}</span>
+                <span>Vote:{char.vote}</span>
+                <span className="vote" onClick={that.addVote.bind(null,char.id)}>[ Vote for me ]</span>
+              </li>
+            )
+          })
+          return (
+            <div>
+              <ul>
+                {charNodes}
+              </ul>
+              <button onClick={this.addData}>+</button>
+            </div>
+          )
+        }
+      });
+      ReactDOM.render(
+        <Char />,
+        document.getElementById("content2")
+      );
+    </script>
+  </body>
+</html>
