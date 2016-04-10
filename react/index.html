@@ -11,16 +11,27 @@
     <script src="./scripts/jquery.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script> -->
     <style>
-      #content2 .char{
+      #main{
+        border: 1px solid #cdc;
+        width: 750px;
+      }
+      #main .char{
         width: 200px;
         border: 1px solid #ccc;
-        margin: 25px 0;
+        margin: 30px 0;
         padding: 0 5px;
       }
-      #content2 .char>span{
+      #main .char>span{
         display: block;
       }
-      #content2 .vote{
+      #main .char>span span:last-child{
+        display: block;
+        float: right;
+      }
+      #main .vote{
+        position: relative;
+        margin: 3px 0;
+        padding: 0 5px;
         float: right;
         color: red;
         cursor: pointer;
@@ -29,11 +40,57 @@
         -webkit-user-select:none;
         user-select: none;
       }
+      #main .vote:hover{
+        background: #f00;
+        color: #fff;
+      }
+      #main .hidden{
+        display: none;
+        opacity: 0;
+      }
+      #main .active{
+        display: block;
+        opacity: 1;
+      }
+      #main .me{
+        transition: opacity .3s ease;
+      }
+      #main h1{
+        text-indent: 20px;
+      }
+      #main .tab{
+        display: inline-block;
+        width: 150px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        background: #ccc;
+      }
+      #main .tab.on{
+        background: #efefef;
+      }
+      .example-enter {
+        opacity: 0.01;
+        transition: opacity .5s ease-in;
+      }
+
+      .example-enter.example-enter-active {
+        opacity: 1;
+      }
+      .example-leave {
+        opacity: 1;
+        transition: opacity .5s ease-in;
+      }
+
+      .example-leave.example-leave-active {
+        opacity: 0.01;
+      }
     </style>
   </head>
   <body>
     <div id="content"></div>
     <div id="content2"></div>
+    <div id="main"></div>
     <!-- <script type="text/babel" src="scripts/example.js"></script> -->
     <script type="text/babel">
       var Timer=React.createClass({
@@ -70,19 +127,20 @@
         document.getElementById("content")
       )
     </script>
+
     <script type="text/babel">
       var Char=React.createClass({
         getInitialState:function(){
           return {data:[
-            {name:"kimi",zone:"chn",vote:2999,id:0},
-            {name:"mom",zone:"usa",vote:1799,id:1},
-            {name:"dad",zone:"jp",vote:899,id:2}
+            {name:this.props.data+".kimi",zone:"chn",vote:2999,id:0},
+            {name:this.props.data+".mom",zone:"usa",vote:1799,id:1},
+            {name:this.props.data+".dad",zone:"jp",vote:899,id:2}
           ]}
         },
         addData:function(){
           var tempData=this.state.data;
           var tempId=tempData.length;
-          tempData.push({name:"pass",zone:"kr",vote:0,id:tempId})
+          tempData.push({name:this.props.data+".pass",zone:"kr",vote:0,id:tempId})
           this.setState({data:tempData})
         },
         addVote:function(idx,e){
@@ -105,6 +163,7 @@
           })
           return (
             <div>
+              <h1>{this.props.data}</h1>
               <ul>
                 {charNodes}
               </ul>
@@ -113,9 +172,46 @@
           )
         }
       });
+
+      var dataSet=["Apple","Banana","Orange","Grape"];
+      var Main = React.createClass({
+        getInitialState: function() {
+          return {item:0};
+        },
+        handleClick:function(idx,e){
+          this.setState({item:idx})
+        },
+        render:function(){
+          var that=this;
+          var items = this.props.items.map(function(item, i) {
+            var classTemp=(that.state.item==i)?"tab on":"tab"
+            return (
+              <li className={classTemp} onClick={this.handleClick.bind(this, i)} key={item}>
+                {item}
+              </li>
+            );
+          }.bind(this));
+          var tabNodes = this.props.items.map(function(item, i) {
+            var classTemp=(that.state.item==i)?"active me":"hidden me"
+            return (
+              <div className={classTemp} key={item+i}>
+                <Char data={item} />
+              </div>
+            );
+          }.bind(this));
+          return (
+            <div>
+            <ul>
+              {items}
+            </ul>
+              {tabNodes}
+            </div>
+          )
+        }
+      });
       ReactDOM.render(
-        <Char />,
-        document.getElementById("content2")
+        <Main items={dataSet}/>,
+        document.getElementById("main")
       );
     </script>
   </body>
