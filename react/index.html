@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>React Tutorial</title>
-    <meta name="viewport" content="width=750,target-densitydpi=high-dpi,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- Not present in the tutorial. Just for basic styling. -->
     <link rel="stylesheet" href="css/base.css" />
     <script src="./scripts/react-with-addons.js"></script>
@@ -12,9 +12,21 @@
     <script src="./scripts/jquery.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script> -->
     <style>
+      #content{
+        background: #efe;
+        padding: 5px 25px;
+      }
+      #content .timer{
+        height: 2px;
+        background: #71E471;
+        transition: 1s linear;
+      }
+      #content button[disabled]{
+        color: #AAA;
+      }
       #main{
         margin: 0 auto;
-        width: 750px;
+        width: 100%;
         border: 1px solid #cdc;
       }
       #main .char{
@@ -62,7 +74,7 @@
       }
       #main .tab{
         display: inline-block;
-        width: 150px;
+        width: 25%;
         height: 50px;
         line-height: 50px;
         text-align: center;
@@ -96,13 +108,14 @@
     <script type="text/babel">
       var Timer=React.createClass({
         getInitialState:function(){
-          return {time:this.props.start};
+          return {time:this.props.start,disabled:true};
         },
         startTick:null,
         tick:function(){
-          if (this.state.time>0) {
-            this.setState({time:this.state.time-1});
+          if (this.state.time>1) {
+            this.setState({time:this.state.time-1,disabled:true});
           }else{
+            this.setState({time:0,disabled:false});
             clearInterval(this.startTick);
           }
         },
@@ -117,8 +130,9 @@
         render:function(){
           return (
             <div>
+              <div className="timer" style={{width:this.state.time/this.props.start*100+'%'}}></div>
               <div>{this.state.time}秒</div>
-              <button onClick={this.triggerTick}>Click me</button>
+              <button onClick={this.triggerTick}  disabled={this.state.disabled?"disabled":""}>{this.state.disabled?"Wait Up":"Go Now!"}</button>
             </div>
           );
         }
