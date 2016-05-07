@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Tutorial</title>
+    <meta name="viewport" content="width=750,target-densitydpi=high-dpi,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Not present in the tutorial. Just for basic styling. -->
+    <link rel="stylesheet" href="css/base.css" />
+    <script src="./scripts/react-with-addons.js"></script>
+    <script src="./scripts/react-dom.js"></script>
+    <script src="./scripts/browser.js"></script>
+    <script src="./scripts/jquery.min.js"></script>
+    <script src="./scripts/signals.min.js" charset="utf-8"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script> -->
+    <link rel="stylesheet" href="./css/index.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <div id="mask"><p>《太极熊猫2》纳哈克好声音20强已经产生！现在为你心仪的好声音投上一票更可获得<b>绝版XX大礼包</b>一份！</p><div class="pat"></div></div>
+    <div id="modal"></div>
+    <div id="content"></div>
+    <div id="main"></div>
+    <button type="button" id="modalCheck" name="button" onClick="myObject.started.dispatch(123)">123</button>
+
+    <!-- <script type="text/babel" src="scripts/example.js"></script> -->
+
+    <script type="text/javascript">
+    $("#mask .pat").click(function(){$(this).parent().slideUp()})
+      var Signal = signals.Signal;
+      var myObject = {
+        started : new Signal(), //past tense is the recommended signal naming convention
+        stopped : new Signal()
+      };
+    </script>
+    <script type="text/babel" src="scripts/index.js"></script>
+  </body>
+</html>

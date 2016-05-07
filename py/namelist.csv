@@ -1,0 +1,165 @@
+﻿zone,cname,ename,sub
+A,中国,China,CN
+A,蒙古,Mongolia,MN
+A,朝鲜,North Korea,KP
+A,韩国,Korea,KR
+A,日本,Japan,JP
+A,菲律宾,Philippines,PH
+A,越南,Vietnam,VN
+A,老挝,Laos,LA
+A,柬埔寨,Kampuchea (Cambodia ),KH
+A,缅甸,Burma,MM
+A,泰国,Thailand,TH
+A,马来西亚,Malaysia,MY
+A,文莱,Brunei,BN
+A,新加坡,Singapore,SG
+A,印度尼西亚,Indonesia,ID
+A,东帝汶,DEMOCRATIC REPUBLIC OF TIMOR-LESTE,TLS
+A,不丹,Kingdom of Bhutan,BTN
+A,孟加拉国,Bangladesh,BD
+A,印度,India,IN
+A,巴基斯坦,Pakistan,PK
+A,斯里兰卡,Sri Lanka,LK
+A,马尔代夫,Maldives,MV
+A,哈萨克斯坦,Kazakstan,KZ
+A,吉尔吉斯斯坦,The Kyrgyz Republic/Kyrgyzstan,KGZ
+A,塔吉克斯坦,Tajikstan,TJ
+A,乌兹别克斯坦,Uzbekistan,UZ
+A,土库曼斯坦,Turkmenistan,TM
+A,阿富汗,Afghanistan,AF
+A,伊拉克,Iraq,IQ
+A,伊朗,Iran,IR
+A,叙利亚,Syria,SY
+A,约旦,Jordan,JO
+A,黎巴嫩,Lebanon,LB
+A,以色列,Israel,IL
+A,巴勒斯坦,The State of Palestine,PLE
+A,沙特阿拉伯,Saudi Arabia,SA
+A,巴林,Bahrain,BH
+A,卡塔尔,Qatar,QA
+A,科威特,Kuwait,KW
+A,阿联酋,The United Arab Emirates,ARE
+A,阿曼,Oman,OM
+A,也门,Yemen,YE
+A,格鲁吉亚,Georgia,GE
+A,亚美尼亚,Armenia,AM
+A,阿塞拜疆,Azerbaijan,AZ
+A,土耳其,Turkey,TR
+A,塞浦路斯,Cyprus,CY
+B,芬兰,Finland,FI
+B,瑞典,Sweden,SE
+B,挪威,Norway,NO
+B,冰岛,Iceland,IS
+B,丹麦,Denmark,DK
+B,法罗群岛,Faroe Islands,G1
+B,爱沙尼亚,Estonia,EE
+B,拉脱维亚,Latvia,LV
+B,立陶宛,Lithuania,LT
+B,白俄罗斯,Belarus,BY
+B,俄罗斯,Russia,RU
+B,乌克兰,Ukraine,UA
+B,摩尔多瓦,"Moldova, Republic of",MD
+B,波兰,Poland,PL
+B,捷克,Czech Republic,CZ
+B,斯洛伐克,Slovakia,SK
+B,匈牙利,Hungary,HU
+B,德国,Germany,DE
+B,奥地利,Austria,AT
+B,瑞士,Switzerland,CH
+B,列支敦士登,Liechtenstein,LI
+B,英国,United Kiongdom,GB
+B,爱尔兰,Ireland,IE
+B,荷兰,Netherlands,NL
+B,比利时,Belgium,BE
+B,卢森堡,Luxembourg,LU
+B,法国,France,FR
+B,摩纳哥,Monaco,MC
+B,马尼亚,Tasmania,G2
+B,保加利亚,Bulgaria,BG
+B,塞尔维亚,The Republic of Serbia,SRB
+B,马其顿,The Republic of Macedonia,MKD
+B,阿尔巴尼亚,Albania,AL
+B,希腊,Greece,GR
+B,斯洛文尼亚,Slovenia,SI
+B,克罗地亚,The Republic of Croatia,HRV
+B,波斯尼亚和墨塞哥维那,Bosnia and Herzegovina,BIH
+B,意大利,Italy,IT
+B,梵蒂冈,Vatican City State,VAT
+B,圣马力诺,San Marino,SM
+B,马耳他,Malta,MT
+B,西班牙,Spain,ES
+B,葡萄牙,Portugal,PT
+B,安道尔,The Principality of Andorra,AND
+C,加拿大,Canada,CA
+C,美国,United States of America,US
+C,墨西哥,Mexico,MX
+C,格陵兰,Greenland,GRL
+C,危地马拉,Guatemala,GT
+C,伯利兹,Belize,BZ
+C,萨尔瓦多,EI Salvador,SV
+C,洪都拉斯,Honduras,HN
+C,尼加拉瓜,Nicaragua,NI
+C,哥斯达黎加,Costa Rica,CR
+C,巴拿马,Panama,PA
+C,巴哈马,Bahamas,BS
+C,古巴,Cuba,CU
+C,牙买加,Jamaica,JM
+C,海地,Haiti,HT
+C,多米尼加共和国,Dominica Rep.,DO
+C,安提瓜和巴布达,Antigua and Barbuda,AG
+C,圣基茨和尼维斯,The Federation of Saint Kitts and Nevis,KNA
+C,多米尼克,The Commonwealth of Dominica,DMA
+C,圣卢西亚,St.Lucia,LC
+C,圣文森特和格林纳丁斯,Saint Vincent and the Grenadines,VCT
+C,格林纳达,Grenada,GD
+C,巴巴多斯,Barbados,BB
+C,特立尼达和多巴哥,Trinidad and Tobago,TT
+C,波多黎各,Puerto Rico,PR
+C,英属维尔京群岛,The British Virgin Islands,VG
+C,美属维尔京群岛,The United States Virgin Islands,USVI
+C,安圭拉,Anguilla,AIA
+C,蒙特塞拉特,Montserrat,MS
+C,瓜德罗普,Guadeloupe,G3
+C,马提尼克,Martinique,G4
+C,荷属安的列斯,Netheriands Antilles,G5
+C,阿鲁巴,Aruba,ABW
+C,特克斯和凯科斯群岛,The Turks and Caicos Islands,TC
+C,开曼群岛,Cayman Is.,G6
+C,百慕大,Bermuda,BM
+D,哥伦比亚,Colombia,CO
+D,委内瑞拉,Venezuela,VE
+D,圭亚那,Guyana,GY
+D,法属圭亚那,French Guiana,GF
+D,苏里南,Suriname,SR
+D,厄瓜多尔,Ecuador,EC
+D,秘鲁,Peru,PE
+D,玻利维亚,Bolivia,BO
+D,巴西,Brazil,BR
+D,智利,Chile,CL
+D,阿根廷,Argentina,AR
+D,乌拉圭,Uruguay,UY
+D,巴拉圭,Paraguay,PY
+E,澳大利亚,Australia,AU
+E,新西兰,New Zealand,NZ
+E,巴布亚新几内亚,Papua New Cuinea,PG
+E,所罗门群岛,Solomon Is,SB
+E,瓦努阿图,Republic of Vanuatu,VUT
+E,密克罗尼西亚,Federated States of Micronesia,FSM
+E,马绍尔群岛,The Republic of Marshall Island,MHL
+E,帕劳,The Republic of Palau,PLW
+E,瑙鲁,Nauru,NR
+E,基里巴斯,The Republic of Kiribati,KIR
+E,图瓦卢,Tuvalu,TUV
+E,萨摩亚,The Independent State of Samoa,WSM
+E,斐济群岛,The Republic of Fiji,FJI
+E,汤加,Tonga,TO
+E,库克群岛,Cook Is.,CK
+E,关岛,Guam,GU
+E,新喀里多尼亚,New Caledonia,NCL
+E,法属波利尼西亚,Polynésie fran?aiseFrench Polynesia,PF
+E,皮特凯恩岛,Pitcairn Islands,PCN
+E,瓦利斯与富图纳,Wallis et Futuna ,WLF
+E,纽埃,Niue,NIU
+E,托克劳,Tokelau,TK
+E,美属萨摩亚,Eastern Samoa,G7
+E,北马里亚纳,TheNorthernMarianaIslands,G8

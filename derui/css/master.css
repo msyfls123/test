@@ -1,0 +1,170 @@
+body{
+      width: 100%;
+      min-height: 100%;
+      /*height: auto !important;*/
+      /*url(../img/back.jpg)*/
+      /*background:#6B0A92 no-repeat center fixed;
+      background-size: cover;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;*/
+      background-color: #6B0A92;
+      background-image: -webkit-radial-gradient(0% bottom, rgba(118,72,160,0.7) 0, rgba(118,72,160,0) 60%),-webkit-radial-gradient(90% bottom, #523f8c 0, rgba(82,63,140,0) 40%),-webkit-radial-gradient(50% top, rgba(84,90,182,0.6) 0, rgba(84,90,182,0) 75%),-webkit-radial-gradient(right top, #794aa2 0, rgba(121,74,162,0) 57%);
+      background-image: radial-gradient(at 0 bottom, rgba(118,72,160,0.7) 0%,rgba(118,72,160,0) 60%),radial-gradient(at 90% bottom, #523f8c 0%,rgba(82,63,140,0) 40%),radial-gradient(at 50% top, rgba(84,90,182,0.6) 0%,rgba(84,90,182,0) 75%),radial-gradient(at right top, #794aa2 0%,rgba(121,74,162,0) 57%);
+      background-size: auto,auto,100% 1000px,100% 1000px;
+      background-repeat: no-repeat;
+      color: #fff;
+}
+
+#logo{
+  position: absolute;
+  left: 50%;
+  top: 35%;
+}
+
+#text{
+  position: absolute;
+  top:35%;
+  width: 100%;
+}
+
+h2{
+  font-family: 'Open Sans','Helvetica Neue',Arial,'Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei',sans-serif
+}
+
+#info{
+  margin-top:15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#accordion{
+  display: none;
+}
+
+@keyframes myfirst
+{
+from {opacity: .1;}
+to {opacity: .9;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+  from {opacity: .1;}
+  to {opacity: .9;}
+}
+
+@-webkit-keyframes myfirst /* Safari 和 Chrome */
+{
+  from {opacity: .1;}
+  to {opacity: .9;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+  from {opacity: .1;}
+  to {opacity: .9;}
+}
+
+#blink{
+  position: fixed;
+  left:50%;
+  bottom: 10px;
+  margin-left: -118px;
+  width: 236px;
+  color: rgba(255, 255, 255, 0.5);
+  /*animation: myfirst 2s;*/
+  /*-moz-animation: myfirst 2s;	/* Firefox */*/
+  /*-webkit-animation: myfirst 2s;	/* Safari 和 Chrome */*/
+  /*-o-animation: myfirst 2s;*/
+  animation-iteration-count:infinite;
+  -webkit-animation-iteration-count:infinite;
+  animation-direction:alternate;
+  -webkit-animation-direction:alternate;
+}
+
+.backnone,.backnone:hover,.backnone:visited,.backnone:active,.backnone:focus{
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: #fff;
+}
+
+.btn-default.backnone{
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.panel-default>.panel-heading.backnone{
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: none;
+  color: #fff;
+}
+
+.open>.dropdown-toggle.btn-default.backnone{
+  background: rgba(255,255,255,.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+  color: #fff;
+}
+
+@media (min-width: 64em) {
+  #logo{
+    width: 250px;
+    height: 250px;
+    margin-left: -125px;
+    margin-top: -125px;
+  }
+  #text{
+    margin-top: 150px;
+  }
+}
+
+@media (min-width: 42em) and (max-width: 64em) {
+  #logo{
+    width: 200px;
+    height: 200px;
+    margin-left: -100px;
+    margin-top: -100px;
+  }
+  #text{
+    margin-top: 125px;
+  }
+  h2{
+    font-size: 1.5em;
+  }
+  h4{
+    font-size: 1em;
+  }
+  #info{
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 42em) {
+  #logo{
+    top: 25%;
+    width: 180px;
+    height: 180px;
+    margin-left: -90px;
+    margin-top: -90px;
+  }
+  #text{
+    top: 30%;
+    margin-top: 100px;
+  }
+  h2{
+    font-size: 1.2em;
+  }
+  h4{
+    font-size: 0.7em;
+  }
+  #info{
+    display: none;
+  }
+  #accordion{
+    display: block;
+  }
+}

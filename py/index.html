@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="http://static.woniu.com/scripts/jquery/jquery-1.10.2.min.js" charset="utf-8"></script>
+  <style media="screen">
+    tr{color:#012}
+    tr.A{background: #C2F2C8}
+    tr.B{background: #E6DAF7}
+    tr.C{background: #E7EBC3}
+    tr.D{background: #D8DDF0}
+    tr.E{background: #EDD1D1}
+    tr:hover{background: #EEE!important;}
+  </style>
+</head>
+<body>
+  <table>
+  </table>
+  <script type="text/javascript">
+    $.getJSON("./output2.json", function(data){
+      var table=document.getElementsByTagName('table')[0];
+      var row1=document.createElement("tr");
+      var th1=document.createElement("td");
+      var th2=document.createElement("td");
+      var th3=document.createElement("td");
+      var th4=document.createElement("td");
+      th1.innerHTML="赛区";
+      th2.innerHTML="国家名";
+      th3.innerHTML="英文名";
+      th4.innerHTML="国家代码";
+      row1.appendChild(th1);
+      row1.appendChild(th2);
+      row1.appendChild(th3);
+      row1.appendChild(th4);
+      table.appendChild(row1);
+      for (var p in data) {
+        if (data.hasOwnProperty(p)) {
+          var row=document.createElement("tr");
+          var td1=document.createElement("td");
+          var td2=document.createElement("td");
+          var td3=document.createElement("td");
+          var td4=document.createElement("td");
+          row.className=data[p].zone;
+          td1.innerHTML=data[p].zone;
+          td2.innerHTML=data[p].cname;
+          td3.innerHTML=data[p].ename;
+          td4.innerHTML=data[p].sub;
+          row.appendChild(td1);
+          row.appendChild(td2);
+          row.appendChild(td3);
+          row.appendChild(td4);
+          table.appendChild(row);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

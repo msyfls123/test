@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>显微镜下实拍电子轨迹</title>
+  <style>
+    body{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items: center;
+      text-align: center;
+      }
+    h3{margin-top: 40px;
+      color: #BBB}
+    #p{
+      margin: 20px;
+      border:1px solid #D896BF;
+      border-radius: 50%;
+      background: #FFDCF2;
+      box-shadow: inset 0px 0px 20px 2px #fff;
+      }
+    #btn{display: block}
+    button{border: none;background: none;cursor: pointer;min-width: 50px;min-height: 50px;}
+    button:hover{background:#D896BF;color: #fff;}
+  </style>
+</head>
+<body>
+  <h3>显微镜下实拍电子轨迹</h3>
+  <canvas id="p" width=300 height=300></canvas>
+  <p><i>Speed x <span id="times"></span></i></p>
+  <div id="btn">
+
+    <button onclick="msy.clear()">RESTART</button>
+    <button onclick="msy.up()">UP</button>
+    <button onclick="msy.slow()">DOWN</button>
+  </div>
+
+  <script>
+  var msy=new Object();
+  var list=[0.0,0.0174524064373,0.0348994967025,0.0523359562429,0.0697564737441,0.0871557427477,0.104528463268,0.121869343405,0.13917310096,0.15643446504,0.173648177667,0.190808995377,0.207911690818,0.224951054344,0.2419218956,0.258819045103,0.275637355817,0.292371704723,0.309016994375,0.325568154457,0.342020143326,0.358367949545,0.374606593416,0.390731128489,0.406736643076,0.422618261741,0.438371146789,0.45399049974,0.469471562786,0.484809620246,0.5,0.51503807491,0.529919264233,0.544639035015,0.559192903471,0.573576436351,0.587785252292,0.601815023152,0.615661475326,0.62932039105,0.642787609687,0.656059028991,0.669130606359,0.681998360062,0.694658370459,0.707106781187,0.719339800339,0.731353701619,0.743144825477,0.754709580223,0.766044443119,0.777145961457,0.788010753607,0.798635510047,0.809016994375,0.819152044289,0.829037572555,0.838670567945,0.848048096156,0.857167300702,0.866025403784,0.874619707139,0.882947592859,0.891006524188,0.898794046299,0.906307787037,0.913545457643,0.920504853452,0.927183854567,0.933580426497,0.939692620786,0.945518575599,0.951056516295,0.956304755963,0.961261695938,0.965925826289,0.970295726276,0.974370064785,0.978147600734,0.981627183448,0.984807753012,0.987688340595,0.990268068742,0.992546151641,0.994521895368,0.996194698092,0.99756405026,0.998629534755,0.999390827019,0.999847695156];
+  var rlist=list.concat();
+  rlist.reverse();
+
+  (function(){
+    var canvas = document.getElementById("p");
+    var ctx = canvas.getContext("2d");
+    var currentList=new Array();
+    var times=0;
+    //画点...
+    function draw(x,y,d){
+      ctx.fillStyle="#2a2e32";
+      ctx.fillRect(x,y,d,d);
+    }
+    //创建点
+    function createPoint(){
+      var point=new Array();
+      var tempX=Math.floor(-7+14*Math.random())
+      point[0]=tempX?tempX:1;
+      point[1]=5+15*Math.random();
+      point[2]=Math.ceil(360*Math.random());
+      point[3]=0;
+      point[4]=Math.ceil(3*Math.random())
+      return point
+    }
+    //转换余弦值
+    function transferCos(deg){
+      switch (Math.floor(deg%360/90)) {
+        case 0:
+          return list[90-deg%90];
+        case 1:
+          return -list[deg%90];
+        case 2:
+          return -list[90-deg%90];
+        case 3:
+          return list[deg%90];
+        default:
+      }
+    }
+    //转换正弦值
+    function transferSin(deg){
+      switch (Math.floor(deg%360/90)) {
+        case 0:
+          return list[deg%90];
+        case 1:
+          return list[90-deg%90];
+        case 2:
+          return -list[deg%90];
+        case 3:
+          return -list[90-deg%90];
+        default:
+      }
+    }
+    //移动点
+    function move(){
+      ctx.clearRect(0,0,300,300)
+      var nowLength=currentList.length;
+      var removeList=[];
+      for(var i=0;i<nowLength;i++){
+        var c0=currentList[i][0],c1=currentList[i][1],c2=currentList[i][2],c3=currentList[i][3],c4=currentList[i][4];
+        var theX=c0+c2;
+        var absX=Math.abs(theX);
+        var theY=c1+c3;
+        draw(150+theY*transferCos(absX),150+theY*(theX>0?1:-1)*transferSin(absX),c4);
+        currentList[i][1]=c1-2;
+        if(c3<0){removeList.push(i)}
+        currentList[i][2]=theX;
+        currentList[i][3]=theY;
+      }
+      while (removeList.length>0) {
+        currentList.splice(removeList.pop(),1)
+      }
+    }
+
+    //主循环
+    function loop(){
+      var lenList=currentList.length;
+      for(;lenList<100;lenList++){
+        currentList.push(createPoint())
+      }
+      move()
+      // console.log(currentList)
+      mloop=setTimeout(function(){loop()},70)
+    }
+
+    //重启所有点
+    function clear(){
+      clearTimeout(mloop)
+      currentList=[]
+      if (times==0) {
+        times+=1;
+        document.getElementById('times').innerHTML=times
+      }
+      loop()
+    }
+
+    //减速
+    function slow(){
+      clearTimeout(mloop)
+      if (times>0) {
+        times-=1;
+        document.getElementById('times').innerHTML=times
+      }
+    }
+
+
+    //加速
+    function up(){
+      times+=1
+      document.getElementById('times').innerHTML=times
+      loop()
+    }
+
+    //暴露给外部变量
+    msy.up=up;
+    msy.clear=clear;
+    msy.slow=slow;
+  })(msy)
+
+    msy.up()
+  </script>
+</body>
+</html>

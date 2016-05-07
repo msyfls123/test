@@ -1,0 +1,116 @@
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<link rel="stylesheet" href="http://static.woniu.com/stylesheets/base.css">
+<style>
+#j-fade{
+  position: relative;
+  z-index: 99;
+}
+#j-fade ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#j-fade, .j-fade-wrap, .j-fade-wrap li{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-position: center top;
+  background-size: cover;
+}
+.j-fade-wrap li.slide1{
+  background-image: url(./img/1.jpg);
+}
+.j-fade-wrap li.slide2{
+  background-image: url(./img/2.jpg);
+}
+.j-fade-wrap li.slide3{
+  background-image: url(./img/3.jpg);
+}
+.j-fade-wrap li.slide4{
+  background-image: url(./img/4.jpg);
+}
+.j-fade-wrap li{
+  float: left;
+}
+.j-fade-icon{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 12px;
+  z-index: 9;
+  overflow: hidden;
+  font-size: 0;
+}
+.j-fade-icon li{
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  width: 25%;
+  height: 12px;
+  background-color: rgba(255,255,255,.1);
+  overflow: hidden;
+}
+.j-fade-icon li:nth-child(2){
+  background-color: rgba(255,255,255,.15);
+}
+.j-fade-icon li:nth-child(3){
+  background-color: rgba(255,255,255,.2);
+}
+.j-fade-icon li:nth-child(4){
+  background-color: rgba(255,255,255,.25);
+}
+.j-fade-icon li.current{
+  background-color: #39c;
+}
+@media screen and (max-width:770px){
+  .j-fade-icon {
+    display: flex;
+    justify-content: space-around;
+    bottom: 25px;
+    height: 35px;
+  }
+  .j-fade-icon li{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-size: cover;
+    opacity: .5;
+    border: 1px solid rgba(255,255,255,.5);
+    box-sizing: border-box;
+    transition: .5s ease;
+  }
+  .j-fade-icon li:nth-child(1){
+    background-image: url(../img/1.jpg);
+  }
+  .j-fade-icon li:nth-child(2){
+    background-image: url(../img/2.jpg);
+  }
+  .j-fade-icon li:nth-child(3){
+    background-image: url(../img/3.jpg);
+  }
+  .j-fade-icon li:nth-child(4){
+    background-image: url(../img/4.jpg);
+  }
+  .j-fade-icon li.current{
+    box-shadow: inset 0 0 10px 3px rgba(255,255,255,.5);
+    opacity: 1;
+  }
+}
+</style>
+<div id="j-fade">
+  <div class="j-fade-wrap">
+    <ul>
+      <li class="slide1"></li>
+      <li class="slide2"></li>
+      <li class="slide3"></li>
+      <li class="slide4"></li>
+    </ul>
+  </div>
+</div>
+<h1>helloworld</h1>
+<script src="http://static.woniu.com/scripts/jquery/jquery-1.10.2.min.js" charset="utf-8"></script>
+<script charset="UTF-8" src="http://static.woniu.com/script/cake/fade/fade-1.0.0-min.js"></script>
+<script>
+var newFade = new cake['fade-1.0.0']('j-fade');
+</script>
