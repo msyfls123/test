@@ -14,12 +14,24 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
+    base64 = require('gulp-base64'),
     del = require('del');
+
+var base64opt={
+    baseDir: "src/css",
+    extensions: ['png'],
+    maxImageSize: 20 * 1024, // bytes
+    debug: true
+}
+
+
+
 // Styles
 gulp.task('styles', function() {
   return gulp.src('src/css/*.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(autoprefixer('>1%'))
+    .pipe(base64(base64opt))
     .pipe(gulp.dest('dist/css'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(minifycss())
