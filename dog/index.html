@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  img{
+    display: block;
+    float: left;
+    width: 50px;
+    height: 50px;
+  }
+  </style>
+</head>
+<body>
+  <script type="text/javascript">
+    for (var i = 0; i < 1024; i++) {
+      var imgTemp = document.createElement("img");
+      var imgRandom = (Math.random()>.5)?"dog.gif":"dog2.gif";
+      imgTemp.setAttribute("src",imgRandom);
+      document.documentElement.appendChild(imgTemp)
+    }
+  </script>
+</body>
+</html>
