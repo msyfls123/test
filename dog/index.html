@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=1">
+  <title>Doggy</title>
   <style>
   *{
     margin: 0;
@@ -18,7 +19,23 @@
 </head>
 <body>
   <script type="text/javascript">
-    for (var i = 0; i < 1024; i++) {
+    console.log(document.documentElement.clientWidth,document.documentElement.clientHeight)
+    var dWidth = document.documentElement.clientWidth,
+        dHeight = document.documentElement.clientHeight;
+    var numX = Math.ceil(parseFloat(dWidth/50)),
+        numY = Math.ceil(parseFloat(dHeight/50)),
+        imgX = parseFloat( dWidth / numX ),
+        imgY = parseFloat( dHeight / numY );
+    var nod = document.createElement("style"),
+    str = "img{width:"+imgX+"px;height:"+imgY+"px;}"
+    nod.type="text/css";
+    if(nod.styleSheet){         //ie下
+      nod.styleSheet.cssText = str;
+    } else {
+      nod.innerHTML = str;       //或者写成 nod.appendChild(document.createTextNode(str))
+    }
+    document.getElementsByTagName("head")[0].appendChild(nod);
+    for (var i = 0; i < numX * numY ; i++) {
       var imgTemp = document.createElement("img");
       var imgRandom = (Math.random()>.5)?"dog.gif":"dog2.gif";
       imgTemp.setAttribute("src",imgRandom);
