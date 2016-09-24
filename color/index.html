@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  /*reset*/
+    body,dl,dd,ul,ol,h1,h2,h3,h4,h5,h6,p,form{margin:0}
+    body,button,input,select,textarea{font:12px/1.5 tahoma,'\5b8b\4f53',sans-serif}
+    h1,h2,h3,h4,h5,h6{font-size:100%}
+    em,b{font-style:normal}
+    a{text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{border:0}
+    button,input,select,textarea{font-size:100%;outline:none}
+    table{border-collapse:collapse;border-spacing:0}
+    td,th,ul,ol{padding:0}
+    .clearfix:after,.clearfix:before{content:"";display:table}.clearfix:after{clear:both}.clearfix{zoom:1}
+    #container{
+      position: relative;
+      margin: 0 auto;
+      width: 970px;
+      padding-top: 30px;
+      padding-left: 30px;
+      background-color: #ccc;
+    }
+    #container div{
+      position: relative;
+      display: block;
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      background-color: #39c;
+      color: transparent;
+      text-align: center;
+    }
+    #container div.active{
+      color: #fff;
+      border: 2px solid #C8B222;
+      width: 96px;
+      height: 96px;
+      border-radius: 5px;
+    }
+    .tip{
+      position: absolute;
+      left: 50%;
+      width: 120px;
+      height: 20px;
+      background: #39c;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="container" class="clearfix"></div>
+  <div class="tip"></div>
+  <script src="jquery.min.js" charset="utf-8"></script>
+  <script src="1.js" charset="utf-8"></script>
+</body>
+</html>
