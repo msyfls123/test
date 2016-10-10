@@ -10,7 +10,7 @@ app.config['MAKO_PREPROCESSOR'] = preprocessor
 def hello():
     name="mako"
     lists = ['apple','banana','pineapple']
-    return render_template('hello.html', user=locals())
+    return render_template('hello.plim', user=locals())
 
 if __name__ == "__main__":
     app.run(debug=True)

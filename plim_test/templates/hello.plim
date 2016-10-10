@@ -1,0 +1,28 @@
+-inherit file="base.plim"
+
+  -def len2()
+    -py
+      name = user['name'] if len(user['lists']) > 2 else 'No'
+    ==name
+  -def classes()
+    -py
+      class_list = ['apple','banana','orange']
+    ==,parent.classes()
+    ==,' '.join(class_list)
+  h1 hello ${self.len2()}
+  
+  p We have ${self.classes()}
+  
+  div.${self.classes()} Name: `code abc ``strong hello ````i ok``````` world
+  input value=user['name']
+  
+
+  -md
+    Use Markdown
+    ============
+
+    See the syntax on [this page][1].
+
+    [1]: http://daringfireball.net/projects/markdown/basics
+
+  ul: -for link in user['lists']:li:a href='/${link}' =link
