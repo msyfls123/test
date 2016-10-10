@@ -1,0 +1,20 @@
+-def classes()
+  -py
+  =="id='abc'"
+
+doctype html
+html
+  head
+    title hello ${user['name']}
+  style
+    body{
+      background: #DDD
+    }
+  -scss
+    body{
+      p{
+        color: #789
+      }
+    }
+  body
+    ${ next.body() }
