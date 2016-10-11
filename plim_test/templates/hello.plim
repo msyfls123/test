@@ -1,28 +1,87 @@
 -inherit file="base.plim"
+-py
+  works_list=[
+    {
+      "url":"douban1.com",
+      "title":"title1",
+      "cover":{
+        "retina_url":"http://139.129.133.18/midea/img/1.jpg",
+        "cover_text":"alt1"
+      },
+      "author":"douban1"
+    },
+    {
+      "url":"douban.com",
+      "title":u"吾问无为谓水水水水",
+      "cover":{
+        "retina_url":"http://139.129.133.18/midea/img/2.jpg",
+        "cover_text":"alt1"
+      },
+      "author":"douban1"
+    },
+    {
+      "url":"douban.com",
+      "title":"title1",
+      "cover":{
+        "retina_url":"http://139.129.133.18/midea/img/3.jpg",
+        "cover_text":"alt1"
+      },
+      "author":"douban1"
+    },
+    {
+      "url":"douban.com",
+      "title":"title1",
+      "cover":{
+        "retina_url":"http://139.129.133.18/midea/img/1.jpg",
+        "cover_text":"alt1"
+      },
+      "author":"douban1"
+    },
+    {
+      "url":"douban.com",
+      "title":"title1",
+      "cover":{
+        "retina_url":"http://139.129.133.18/midea/img/1.jpg",
+        "cover_text":"alt1"
+      },
+      "author":"douban1"
+    },
+    {
+      "url":"douban.com",
+      "title":"title1",
+      "cover":{
+        "retina_url":"http://139.129.133.18/midea/img/1.jpg",
+        "cover_text":"alt1"
+      },
+      "author":"douban1"
+    }
+  ]
 
-  -def len2()
-    -py
-      name = user['name'] if len(user['lists']) > 2 else 'No'
-    ==name
-  -def classes()
-    -py
-      class_list = ['apple','banana','orange']
-    ==,parent.classes()
-    ==,' '.join(class_list)
-  h1 hello ${self.len2()}
-  
-  p We have ${self.classes()}
-  
-  div.${self.classes()} Name: `code abc ``strong hello ````i ok``````` world
-  input value=user['name']
-  
-
-  -md
-    Use Markdown
-    ============
-
-    See the syntax on [this page][1].
-
-    [1]: http://daringfireball.net/projects/markdown/basics
-
-  ul: -for link in user['lists']:li:a href='/${link}' =link
+section.entry-type
+  .hd
+    div.icon.icon-pro-woman
+      i
+    span.name 职业女性故事
+    a href='#' class="more"
+      更多
+      i &#8250;
+  .bd
+    ul
+        -for w in works_list
+          li
+            .shadow-cover
+              a href="${w['url']}" class="pic"
+                img src=w['cover']['retina_url'] alt=w['cover']['cover_text']
+            .des-wrap
+              .title: a href=w['url'] =w['title']
+              .author =w['author']
+section.entry-type
+  .hd
+    div.icon.icon-comedy-story
+      i
+    span.name 喜剧故事
+section.entry-type
+  .hd
+    div.icon.icon-science-fiction
+      i
+    span.name 近未来科幻故事

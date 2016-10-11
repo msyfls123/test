@@ -1,23 +1,8 @@
--def classes()
-  -py
-  =="abc"
-
 doctype html
 html
   head
-    title hello ${user['name']}
-  style
-    body{
-      background: #DDD
-    }
-  -scss
-    body{
-      p{
-        color: #789
-      }
-    }
+    title hello
+    link href='/static/reset.css' rel="stylesheet"
+    link href='/static/list.css?123' rel="stylesheet"
   body
     ${ next.body() }
-    handlebars#testapp
-      .container {{outlet}}
-    handlebars#about: .container {{outlet}}

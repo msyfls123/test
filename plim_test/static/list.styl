@@ -1,0 +1,150 @@
+.entry-type
+  width: 950px
+  margin: 55px auto 0
+  font-family: "Helvetica Neue",Helvetica,"Lucida Grande","Luxi Sans",Arial,"Hiragino Sans GB",STHeiti,"Microsoft YaHei","Wenquanyi Micro Hei","WenQuanYi Micro Hei Mono","WenQuanYi Zen Hei","WenQuanYi Zen Hei Mono",LiGothicMed
+  .hd
+    width: 100%
+    height: 55px
+    background-color: #c05a32
+    color: #fff
+  .icon
+    display: block;
+    float: left;
+    width: 55px
+    height: 55px
+    i
+      margin: 9px 9px
+      display: block
+      width: 36px
+      height: 36px
+      background-image: url(/static/icon-subjects.png)
+  .name
+    margin-left: 20px
+    line-height: 55px
+    font-size: 20px
+  .more
+    padding-left: 10px
+    float: right
+    line-height: 55px
+    font-size: 14px
+    color: #fff
+    text-decoration: none
+    &:hover
+      background: #fff
+      color: #c05a32
+      transition: all .15s ease
+      i
+        color: #fff
+        background-color: #c05a32
+    i
+      display: block
+      float: right
+      margin: 16px 16px 16px 5px
+      width: 23px
+      height: 23px
+      line-height: 20px
+      border-radius: 50%
+      color: #c05a32
+      background-color: #fff
+      text-align: center
+      font-size: 23px
+      font-style: normal
+      text-indent: 3px
+  .bd
+    width: 1000px
+    margin: 30px auto 0
+    *zoom: 1
+    &:after
+      clear: both
+      display: table
+      content: ''
+      line-height: 0
+    ul
+      width: 1007px
+    li
+      display: block
+      margin-right: 57px
+      float: left
+      width: 110px
+    .shadow-cover
+      width: 100%
+      height: 100%
+      background: #999
+    img
+      width: 110px
+      height: 164px
+      box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.3)
+    .title
+      margin-top: 10px
+      font-size: 14px
+      font-weight: 600
+      font-style: normal
+      font-stretch: normal
+      line-height: 1.5
+      text-align: left
+      a
+        color: #c05a32
+        text-decoration: none
+        &:hover
+          background-color: #c05a32
+          color: #fff
+    .author
+      font-size: 12px
+      font-weight: normal
+      font-style: normal
+      font-stretch: normal
+      text-align: left
+      color: #b7b19c
+
+@media (max-width: 768px)
+  .entry-type
+    padding: 0 20px
+    width: auto
+    .hd
+      .more
+        position: relative
+        width: 100%
+        right: 0
+        text-align: right
+        &:hover
+          color: #fff
+        &:before
+          position: absolute
+          right: 28px
+          content: '入围作品'
+          color: #c05a32
+        i
+          margin: 15px 0
+          color: #fff
+          background-color: #c05a32
+    .bd
+      width: 100%
+      margin-bottom: -20px
+      ul
+        width: 106%
+        li
+          position: relative
+          width: 27%
+          height: auto
+          margin-bottom: 87px
+          margin-right: 6%
+          .shadow-cover
+            img
+              width: 100%
+              height: auto
+          .des-wrap
+            position: absolute
+            top: 100%
+
+.icon-pro-woman
+  background-color: #e196b0
+  i
+    background-position: 0 0
+.icon-comedy-story
+  background-color: #5ecca1
+  i
+    background-position: 0 -41px
+.icon-science-fiction
+  background-color: #f5ca64
+  i
+    background-position: 0 -82px

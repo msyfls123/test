@@ -1,5 +1,5 @@
 from flask import Flask
-from flask.ext.mako import MakoTemplates, render_template
+from flask_mako import MakoTemplates, render_template
 from plim import preprocessor
 
 app = Flask(__name__)
@@ -10,6 +10,7 @@ app.config['MAKO_PREPROCESSOR'] = preprocessor
 def hello():
     name="mako"
     lists = ['apple','banana','pineapple']
+    html = '<p>I\'m p</p>'
     return render_template('hello.plim', user=locals())
 
 if __name__ == "__main__":
