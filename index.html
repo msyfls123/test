@@ -2,26 +2,94 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
 	<title>Welcome to Kimi's Test Lab</title>
 	<base target="_blank">
 	<style>
-          body{margin:0 auto;width:800px;background:#ddd}
+    body{margin:0 auto;width:80%;background:#ddd}
 	  h1{text-align:center;color:#c05a32;}
-	  ul{list-style:none}
-	  li{display:block;float:left;margin:20px;padding:0;background:#c05a32;color:#fff;min-width:110px;min-height:50px;text-align:center;line-height:50px;}
+	  ul{list-style:none;text-align: center;}
+	  a{display:inline-block;margin:20px;padding:0;background:#c05a32;color:#fff;min-width:110px;min-height:50px;text-align:center;line-height:50px;text-decoration: none}
+		li.lg{width: 100%;margin: 20px auto 0;padding: 20px}
 	  li:hover{background:#a03a12;transition:all .3s ease;}
 	  img{max-width:720px;margin:0 auto;}
+		.preview{position: absolute;top: 0;left: 50%;margin-left: -400px; opacity: 0;border: 8px solid #888;outline: none;background: #fff; transform: scale(.5,.5); transition: .5s ease;}
+		.preview.active{opacity: 1}
 	</style>
 </head>
 <body>
-	<h1>Welcome, strangers</h1>
-	<ul>
+	<h1>Welcome, Strangers</h1>
+	<iframe class="preview" src="/midea" width="800px" height="800px">
+	</iframe>
+	<ul id="nav">
 		<a href="midea"><li>midea</li></a>
 		<a href="color"><li>color</li></a>
-                <a href="dog"><li>dog</li></a>
-                <a href="py"><li>country code</li></a>
-                <a href="canvas"><li>canvas</li></a>
-		<li><img src='./vim.png'></li>
+    <a href="dog"><li>dog</li></a>
+    <a href="py"><li>country code</li></a>
+    <a href="canvas"><li>canvas</li></a>
+		<li class="lg"><img src='./vim.png'></li>
+		<li class="lg"><img src='./git.jpg'></li>
 	</ul>
+	<script type="text/javascript">
+		var nav = document.getElementById('nav'),
+				preview = document.querySelector('.preview'),
+		    list = nav.children,
+				timeout = null
+
+		function set(src){
+			preview.setAttribute('src',src)
+			preview.className="preview active"
+		}
+    for (var i = 0; i < list.length; i++) {
+    	if(list[i].hasAttribute('href')){
+				(function(hr){
+					list[i].addEventListener('mouseover',function(e){
+						clearTimeout(timeout)
+						timeout=null
+						set(hr)
+					})
+				})(list[i].getAttribute('href'))
+				list[i].addEventListener('mouseout',function(e){
+					if(timeout) return false
+					timeout = setTimeout(function(){
+						preview.className="preview"
+					},2000)
+				})
+				preview.addEventListener('mouseover', function(e){
+					clearTimeout(timeout)
+					timeout=null
+				})
+				preview.addEventListener('mouseout',function(e){
+					if(timeout) return false
+					timeout = setTimeout(function(){
+						preview.className="preview"
+					},2000)
+				})
+			}
+    }
+		// nav.addEventListener("mouseover",function(e){
+		// 	var display = false,
+		// 	    isEle = false;
+		//
+		// 	for (var i = 0; i < list.length; i++) {
+		// 		var tempEle = list[i]
+		// 		console.log(tempEle)
+		// 		for (var j = 0;  j < tempEle.children.length; j++) {
+		// 		  isEle = isEle || e.target==tempEle.children[j]
+		//
+		// 		}
+		// 		isEle = isEle || e.target==tempEle
+		//
+		// 		if(isEle&&(tempEle.hasAttribute('href')||tempEle.parentElement.hasAttribute('href'))){
+		// 			var tempHref =  list[i].getAttribute('href') || list.parentElement.getAttribute('href')
+		// 			preview.setAttribute('src', tempHref)
+		// 			display = display || true
+		// 		}else{
+		// 			display = display || false
+		// 		}
+		// 	}
+		// 	preview.style.display = display ? 'block' : 'none'
+		// })
+	</script>
 </body>
 </html>
