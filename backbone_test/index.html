@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="http://the5fireblog.b0.upaiyun.com/staticfile/jquery-1.10.2.js"></script>
+  <script src="http://the5fireblog.b0.upaiyun.com/staticfile/underscore.js"></script>
+  <script src="http://the5fireblog.b0.upaiyun.com/staticfile/backbone.js"></script>
+</head>
+<body>
+  <div id="app">
+    <ul></ul>
+    <button type="button" id="check">Add</button>
+    <button type="button" id="close">Close</button>
+  </div>
+
+  <script type="text/javascript">
+    (function($){
+      var View = Backbone.View.extend({
+        el: $("#app"),
+        initialize: function(options){
+          this.data = options.data
+          this.render()
+        },
+        events: {
+          'click #check': 'checkIn',
+          'click #close': 'close'
+        },
+        checkIn: function(){
+          this.data++
+          var el = this.$el
+          el.find('ul').append($('<li>').html(this.data+': '+Math.random()*100))
+        },
+        render: function(){
+          var el = this.$el
+          el.find('ul').append($('<li>').html(this.data+': '+Math.random()*100))
+        }
+      })
+      var NewView = View.extend({
+        initialize:function(options){
+          View.prototype.initialize.apply(this,arguments)
+          console.log(this, View.prototype.checkIn)
+        },
+        close:function(){
+          Backbone.View.prototype.remove.apply(this)
+          console.log("out")
+        }
+      })
+      var newView = new NewView({data:1})
+    })(jQuery)
+  </script>
+</body>
+</html>
